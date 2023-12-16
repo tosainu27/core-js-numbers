@@ -23,73 +23,23 @@ function getDistanceBetweenPoints(x1, y1, x2, y2) {
   return Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
 }
 
-/**
- * Returns a root of linear equation a*x + b = 0 given by coefficients a and b.
- *
- * @param {number} a
- * @param {number} b
- * @return {number}
- *
- * @example:
- *   5*x - 10 = 0    => 2
- *   x + 8 = 0       => -8
- *   5*x = 0         => 0
- */
-function getLinearEquationRoot(/* a, b */) {
-  throw new Error('Not implemented');
+function getLinearEquationRoot(a, b) {
+  return Number(-b) / Number(a);
 }
 
-/**
- * Returns an angle (in radians) between two vectors given by xi and yi,
- * coordinates in Cartesian plane.
- * See details https://en.wikipedia.org/wiki/Euclidean_vector#Representations
- *
- * @param {number} x1
- * @param {number} y1
- * @param {number} x2
- * @param {number} y2
- * @return {number}
- *
- * @example:
- *   (1,0) (0,1)     => π/2
- *   (0,1) (0,-1)    => π
- *   (0,-1) (1,0)    => π/2
- *   (0,1) (0,1)     => 0
- */
-function getAngleBetweenVectors(/* x1, y1, x2, y2 */) {
-  throw new Error('Not implemented');
+function getAngleBetweenVectors(x1, y1, x2, y2) {
+  return Math.acos(
+    (x1 * x2 + y1 * y2) /
+      (Math.sqrt(x1 ** 2 + y1 ** 2) * Math.sqrt(x2 ** 2 + y2 ** 2))
+  );
 }
 
-/**
- * Returns a last digit of a integer number.
- * The input parameter will always be greater than or equal to zero and will be in decimal notation.
- *
- * @param {number} value
- * @return {number}
- *
- * @example:
- *   100     => 0
- *    37     => 7
- *     5     => 5
- *     0     => 0
- */
-function getLastDigit(/* value */) {
-  throw new Error('Not implemented');
+function getLastDigit(value) {
+  return Number(value % 10);
 }
 
-/**
- * Returns a number by given string representation.
- *
- * @param {string} value
- * @return {number}
- *
- * @example:
- *    '100'     => 100
- *     '37'     => 37
- * '-525.5'     => -525.5
- */
-function parseNumberFromString(/* value */) {
-  throw new Error('Not implemented');
+function parseNumberFromString(value) {
+  return +value;
 }
 
 /**
@@ -105,8 +55,8 @@ function parseNumberFromString(/* value */) {
  *   3,3,3   => 5.196152422706632
  *   1,2,3   => 3.741657386773941
  */
-function getParallelepipedDiagonal(/* a, b, c */) {
-  throw new Error('Not implemented');
+function getParallelepipedDiagonal(a, b, c) {
+  return Number(Math.sqrt(a ** 2 + b ** 2 + c ** 2));
 }
 
 /**
@@ -126,8 +76,8 @@ function getParallelepipedDiagonal(/* a, b, c */) {
  *   1678, 2  => 1700
  *   1678, 3  => 2000
  */
-function roundToPowerOfTen(/* num, pow */) {
-  throw new Error('Not implemented');
+function roundToPowerOfTen(num, pow) {
+  return Math.round(num / 10 ** pow) * 10 ** pow;
 }
 
 /**
