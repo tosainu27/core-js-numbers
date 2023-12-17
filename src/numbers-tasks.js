@@ -42,97 +42,37 @@ function parseNumberFromString(value) {
   return +value;
 }
 
-/**
- * Returns a diagonal length of the rectangular parallelepiped given by its sides a,b,c.
- *
- * @param {number} a
- * @param {number} b
- * @param {number} c
- * @return {number}
- *
- * @example:
- *   1,1,1   => 1.7320508075688772
- *   3,3,3   => 5.196152422706632
- *   1,2,3   => 3.741657386773941
- */
 function getParallelepipedDiagonal(a, b, c) {
   return Number(Math.sqrt(a ** 2 + b ** 2 + c ** 2));
 }
 
-/**
- * Returns the number rounded to specified power of 10.
- *
- * @param {number} num
- * @param {number} pow
- * @return {number}
- *
- * @example:
- *   1234, 0  => 1234
- *   1234, 1  => 1230
- *   1234, 2  => 1200
- *   1234, 3  => 1000
- *   1678, 0  => 1678
- *   1678, 1  => 1680
- *   1678, 2  => 1700
- *   1678, 3  => 2000
- */
 function roundToPowerOfTen(num, pow) {
   return Math.round(num / 10 ** pow) * 10 ** pow;
 }
 
-/**
- * Returns true is the number is prime; otherwise false.
- * See: https://en.wikipedia.org/wiki/Primality_test
- *
- * @param {number} n
- * @return {bool}
- *
- * @example:
- *   4 => false
- *   5 => true
- *   6 => false
- *   7 => true
- *   11 => true
- *   12 => false
- *   16 => false
- *   17 => true
- */
-function isPrime(/* n */) {
-  throw new Error('Not implemented');
+function isPrime(n) {
+  for (let i = 2; i < n; i += 1) {
+    if (n % i === 0) return false;
+  }
+  return n > 1;
 }
 
-/**
- * Tries to convert value to number and returns it if conversion was successful;
- * otherwise returns default value passed as a second argument.
- *
- * @param {any} value
- * @param {any} def
- * @return {number}
- *
- * @example
- *   toNumber(null, 0) => 0
- *   toNumber('test', 0) => 0
- *   toNumber('1', 0) => 1
- *   toNumber(42, 0) => 42
- *   toNumber(new Number(42), 0) => 42
- */
-function toNumber(/* value, def */) {
-  throw new Error('Not implemented');
+function toNumber(value, def) {
+  if (value === null) {
+    return def;
+  }
+  if (Number.isNaN(value)) {
+    return def;
+  }
+  const result = typeof value;
+  if (result !== 'number' && +value !== Number(value)) {
+    return def;
+  }
+  return Number(value);
 }
 
-/**
- * Returns the cube of the given number.
- *
- * @param {number} num
- * @return {number}
- *
- * @example:
- *   3  => 27
- *   -2 => -8
- *   0  => 0
- */
-function getCube(/* num */) {
-  throw new Error('Not implemented');
+function getCube(num) {
+  return num ** 3;
 }
 
 /**
